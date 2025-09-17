@@ -1,0 +1,23 @@
+Notes:
+
+- Gymnasium is the library that provides reinforcement learning environments 
+- optional dependencies can be added between [] while running pip command
+- 'pip install "gymnasium[classic-control]"' - to download 'classic-control' package additionally. It consists of classic control environments like cartpole, mountaincar, acrobat, pendulum. These are not downloaded by default if we just run pip install gymnaisum
+- make() is used to initialise environment -> gymnasium.Env
+- The environment class has API methods  that can be used to interact with the environment:
+  - reset(): reset environment to initial state. returns:
+    - first agent observation for an episode
+    - information from environment i.e metrics, debug info
+  - step(): updates an environment with action. returns:
+    - next agent observation 
+    - reward for taking action
+    - if environment has terminated or truncated dur to latest action
+    - information from environment about the step
+  - render(): determines if we want to see a visual window or array or no visual representation 
+  - close(): closes the environment
+- Attributes of environment class that can be used:
+  - action_space: space object related to valid actions
+  - observation_space: space object related to valid observations
+  - spec: environment spec required to initialize the environment using make()
+  - metadata: metadata of environment
+  - np_random: random number generator
