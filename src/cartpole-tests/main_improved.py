@@ -14,8 +14,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'component'))
 
 import gymnasium as gym
 import numpy as np
-from policies import RandomPolicy, HeuristicPolicy, QLearningPolicy, ImprovedHeuristicPolicy
-from trainer import PolicyTrainer
+from cartpolicies import RandomPolicy, HeuristicPolicy, QLearningPolicy, ImprovedHeuristicPolicy
+from cartrainer import PolicyTrainer
 
 
 def main():
