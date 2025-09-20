@@ -3,49 +3,43 @@ Note: Use Markdown Cheat Sheet download in the directory as needed.
 - Useful links
   - https://github.com/im-luka/markdown-cheatsheet
 
+# Progress Report
+- Author: Satya Phanindra Kumar Kalaga
+- GitHub: [phanindra-max](https://github.com/phanindra-max)
 ---
-## Date: Week 1 - Month Day Year 
+## Date: Week 1 - September 09 2025 
 - Topics of discussion
-    - Item1
-    - Item2
-    - Item3
+    - Understanding RL Framework (MDP)
+    - Explore Gymanasium Environments
+    - Explore RL Algorithms (Q-Learning, DQN, Policy Gradients)
 
 - Action Items:
 
-* [ ] Action Item 1
-* [ ] Action Item 2
-* [ ] Action Item 3
-* [ ] Action Item 4
-* [ ] Action Item 5
+* [x] Understand Markov Decision Process (MDP), and sequential decision making
+* [x] Understand designing State and Action spaces, Reward functions
+* [x] Implement basic algorithms (Simple Heuristic) in CartPole-v1
+
 ---
 
-## Date: Week 2 - Month Day Year 
+## Date: Week 2 - September 16 2025
 - Topics of discussion
-    - Item1
-    - Item2
-    - Item3
+    - Literature Review on relevant papers
+    - Explore RL algorithms (Q-Learning, DQN, Policy Gradients)
 
 - Action Items:
 
-* [ ] Action Item 1
-* [ ] Action Item 2
-* [ ] Action Item 3
-* [ ] Action Item 4
-* [ ] Action Item 5
+* [ ] Skim through papers suggested by Tyler and pick one to implement
+* [ ] Implement Q-Learning in CartPole-v1
 ---
-## Date: Week 3 - Month Day Year 
+## Date: Week 3 - September 23 2025
 - Topics of discussion
-    - Item1
-    - Item2
-    - Item3
+    - Implement RL Guided SSL paper
+    - Setup required files for the project (main.py, model.py, utils/env.py, train.py, test.py, benchmark.py)
 
 - Action Items:
 
-* [ ] Action Item 1
-* [ ] Action Item 2
-* [ ] Action Item 3
-* [ ] Action Item 4
-* [ ] Action Item 5
+* [ ] Build a simple RL Guided SSL pipeline in a sandbox environment
+* [ ] Create the required files in respective directories
 ---
 ## Date: Week 4 - Month Day Year 
 - Topics of discussion
