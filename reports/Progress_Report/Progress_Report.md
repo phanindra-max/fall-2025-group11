@@ -28,18 +28,18 @@ Note: Use Markdown Cheat Sheet download in the directory as needed.
 
 - Action Items:
 
-* [ ] Skim through papers suggested by Tyler and pick one to implement
-* [ ] Implement Q-Learning in CartPole-v1
+* [x] Skim through papers suggested by Tyler and pick one to implement
+* [x] Implement Q-Learning in CartPole-v1
 ---
 ## Date: Week 3 - September 23 2025
 - Topics of discussion
     - Implement RL Guided SSL paper
-    - Setup required files for the project (main.py, model.py, utils/env.py, train.py, test.py, benchmark.py)
+    - Setup required files for the project (main.py, model.py, component/env.py, train.py, test.py, benchmark.py)
 
 - Action Items:
 
 * [ ] Build a simple RL Guided SSL pipeline in a sandbox environment
-* [ ] Create the required files in respective directories
+* [x] Create the required files in respective directories
 ---
 ## Date: Week 4 - Month Day Year 
 - Topics of discussion
