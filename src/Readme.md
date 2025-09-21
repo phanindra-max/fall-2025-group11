@@ -76,6 +76,8 @@ This script trains a standard CNN on the full 60,000 labeled MNIST training imag
 
 **Final Test Accuracy:** 99.24%
 
+![Standard Supervised Training (Baseline) training curves](./Results/train_standard_cnn_mnist_output.png)
+
 ### Experiment 2: Single-Shot Pseudo-Labeling
 
 This experiment simulates a scenario with limited labeled data. It first trains a model on only 1,000 labeled samples, then uses this model to generate "pseudo-labels" for unlabeled data it is confident about. Finally, a new model is trained on the combined labeled and pseudo-labeled data.
@@ -84,6 +86,8 @@ This experiment simulates a scenario with limited labeled data. It first trains 
 **Final Model Accuracy (after adding 34,799 pseudo-labels):** 95.00%
 
 This shows a significant performance gain of +2.14% from a single round of pseudo-labeling. The final model's training is much more stable, as seen in the graph.
+
+![Single-Shot Pseudo-Labeling](./Results/pseudo_labeling_mnist_output.png)
 
 ### Experiment 3: Iterative Pseudo-Labeling
 
@@ -96,6 +100,8 @@ This approach extends the single-shot method by iteratively generating pseudo-la
 
 The iterative process provides a substantial boost in accuracy, reaching a peak of 96.45%. The slight dip in the final iteration suggests that noisy pseudo-labels may be starting to accumulate.
 
+![Iterative Pseudo-Labeling](./Results/iterative_pseudo_labeling_output.png)
+
 ### Experiment 4: Comparison of SSL Methods
 
 This script provides a fair comparison between three SSL techniques using the same 1,000 labeled samples and validation set.
@@ -103,6 +109,8 @@ This script provides a fair comparison between three SSL techniques using the sa
 - **Pseudo-Labeling (PL):** A simple, multi-stage approach.
 - **FixMatch:** An advanced method that uses consistency regularization between weakly and strongly augmented versions of an unlabeled image.
 - **Unsupervised Data Augmentation (UDA):** Another consistency regularization method that aims to minimize the divergence between predictions on an original and an augmented image.
+
+![Comparison of SSL Methods](./Results/ssl_methods_comparison_output.png)
 
 **Final Test Accuracies:**
 
