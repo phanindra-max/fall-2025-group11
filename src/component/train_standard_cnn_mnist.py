@@ -40,7 +40,7 @@ def main(epochs: int = 10, batch_size: int = 32, validation_split: float = 0.1, 
                                        verbose=verbose)
 
     # 3. Plot results
-    plot_training_history(history)
+    plot_training_history(history, title_prefix="Standard CNN MNIST")
     print("\n✅ COMPLETED: Standard CNN Training.\n")
     
 if __name__ == "__main__":

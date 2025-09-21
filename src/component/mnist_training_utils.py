@@ -182,11 +182,12 @@ def train_and_evaluate(
 
 
 
-def plot_training_history(history: History) -> Figure:
+def plot_training_history(history: History, title_prefix: str) -> Figure:
     """
     Plot training & validation accuracy and loss from a Keras History object.
 
     :param history: History - Training history returned by model.fit()
+    :param title_prefix: str - Optional prefix for the plot titles
     :rtype: Figure
     :return: Matplotlib Figure object containing the plots
     """
@@ -196,7 +197,7 @@ def plot_training_history(history: History) -> Figure:
     plt.subplot(1, 2, 1)
     plt.plot(history.history["accuracy"], label="Training Accuracy")
     plt.plot(history.history["val_accuracy"], label="Validation Accuracy")
-    plt.title("Training and Validation Accuracy")
+    plt.title(f"{title_prefix} Training and Validation Accuracy")
     plt.xlabel("Epoch")
     plt.ylabel("Accuracy")
     plt.legend()
@@ -312,11 +313,12 @@ def plot_comparison_history(
 
 
 
-def plot_iterative_history(histories: Dict[str, History]):
+def plot_iterative_history(histories: Dict[str, History], title_prefix: str = "") -> None:
     """
     Plots training and validation accuracy and loss across multiple iterations.
     
     :param histories: Dict[str, History] - A dictionary mapping iteration names to History objects
+    :param title_prefix: str - Optional prefix for the plot titles
     :rtype: None
     """
     plt.figure(figsize=(14, 5))
@@ -325,7 +327,7 @@ def plot_iterative_history(histories: Dict[str, History]):
     plt.subplot(1, 2, 1)
     for name, history in histories.items():
         plt.plot(history.history['val_accuracy'], label=f'{name} Val', linestyle='--')
-    plt.title('Validation Accuracy Across Iterations')
+    plt.title(f'{title_prefix} Validation Accuracy Across Iterations')
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
     plt.legend()
@@ -335,7 +337,7 @@ def plot_iterative_history(histories: Dict[str, History]):
     plt.subplot(1, 2, 2)
     for name, history in histories.items():
         plt.plot(history.history['val_loss'], label=f'{name} Val', linestyle='--')
-    plt.title('Validation Loss Across Iterations')
+    plt.title(f'{title_prefix} Validation Loss Across Iterations')
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
     plt.legend()
@@ -346,18 +348,19 @@ def plot_iterative_history(histories: Dict[str, History]):
 
 
 
-def plot_accuracy_improvement(accuracies: List[float]):
+def plot_accuracy_improvement(accuracies: List[float], title_prefix: str = "") -> None:
     
     """
     Plots the improvement in test accuracy over multiple iterations.
     :param accuracies: List[float] - List of test accuracies from each iteration
+    :param title_prefix: str - Optional prefix for the plot title
     :rtype: None
     """
     
     plt.figure(figsize=(8, 5))
     iterations = range(len(accuracies))
     plt.plot(iterations, accuracies, marker='o', linestyle='-')
-    plt.title('Test Accuracy Improvement Over Iterations')
+    plt.title(f'{title_prefix} Test Accuracy Improvement Over Iterations')
     plt.xlabel('Iteration (0 = Initial Model)')
     plt.ylabel('Test Accuracy')
     plt.xticks(iterations)

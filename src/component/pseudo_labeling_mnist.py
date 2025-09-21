@@ -59,7 +59,7 @@ def main(labeled_size: int = 1000, epochs: int = 10, batch_size: int = 32, valid
                                              batch_size=batch_size, validation_split=validation_split, verbose=verbose)
     
     # 5. Plot comparison
-    plot_comparison_history({"Initial (Labeled Only)": history_initial,"Final (Pseudo-Labeled)": history_final})
+    plot_comparison_history({"Initial (Labeled Only)": history_initial,"Final (Pseudo-Labeled)": history_final}, title_prefix="Pseudo-Labeling MNIST")
     print("\n✅ COMPLETED: Pseudo-Labeling Experiment.\n")
 
 

@@ -157,6 +157,7 @@ def main(seed=42, labeled_size=1000, test_size=0.1, val_batch_size=64, verbose=1
     ax1.plot(smooth_curve(results['Pseudo-Labeling']['history_final']['val_accuracy']), label='PL (Final)', marker='o', markersize=3)
     ax1.plot(smooth_curve(results['FixMatch']['history']['val_accuracy']), label='FixMatch', marker='s', markersize=3)
     ax1.plot(smooth_curve(results['UDA']['history']['val_accuracy']), label='UDA', marker='^', markersize=3)
+    ax1.set_title('Validation Accuracy vs. Epoch for SSL Methods Comparison')
     ax1.legend()
 
     # --- Loss Plot (by Epoch) ---
@@ -167,6 +168,7 @@ def main(seed=42, labeled_size=1000, test_size=0.1, val_batch_size=64, verbose=1
     ax2.plot(smooth_curve(results['Pseudo-Labeling']['history_final']['val_loss']), label='PL (Final)', marker='o', markersize=3)
     ax2.plot(smooth_curve(results['FixMatch']['history']['val_loss']), label='FixMatch', marker='s', markersize=3)
     ax2.plot(smooth_curve(results['UDA']['history']['val_loss']), label='UDA', marker='^', markersize=3)
+    ax2.set_title('Validation Loss vs. Epoch for SSL Methods Comparison')
     ax2.legend()
 
     plt.tight_layout()
