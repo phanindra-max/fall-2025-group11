@@ -59,7 +59,6 @@ Semi-supervised learning (SSL) addresses the challenge of training effective mod
 | Iterative | **87.23%** | 400 | 40% | Multi-iteration, RA/RH |
 | Baseline | 84.96% | 119 | 11.9% | Confidence + Mixup |
 | RL-based | 65.75% | 971 | 97.1% | Reinforcement Learning |
-| Multi-Technique Framework | N/A | N/A | N/A | Framework (3 techniques) |
 
 ### 3.2 Detailed Results
 
@@ -174,16 +173,4 @@ This comparative study demonstrates that iterative pseudo-labeling with proper r
 
 The results suggest that the quality of pseudo-label selection is more important than quantity, and that iterative refinement with appropriate regularization is key to successful semi-supervised learning with pseudo-labeling.
 
-## 7. Technical Specifications
 
-- **Framework**: PyTorch
-- **Python Version**: 3.13
-- **Dependencies**: torch, torchvision, numpy, gymnasium
-- **Hardware**: CPU-based training
-- **Reproducibility**: Fixed random seeds (42) for consistent results
-
----
-
-*Report generated on: September 21, 2025*
-*Total experiments conducted: 4 different approaches*
-*Total training time: < 5 minutes across all experiments*
