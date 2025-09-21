@@ -1,0 +1,2 @@
+experiment,confidence,mixup,RA_RH,RL,num_labeled,num_pseudo_labels,accuracy
+pseudo_labeling_step2,True,True,True,False,1000,137,0.8632

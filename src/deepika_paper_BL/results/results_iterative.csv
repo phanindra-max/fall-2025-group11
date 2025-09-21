@@ -1,0 +1,2 @@
+experiment,seed,dataset,methods,tau,mixup_alpha,lambda_ra_rh,iterations_ran,num_labeled,num_pseudo_labels,test_accuracy,training_time_minutes,notes
+pseudo_labeling_step3_iterative,42,MNIST,confidence+mixup+RA_RH+iterative,0.9,0.4,0.1,3,1000,400,0.8723,0.13,
