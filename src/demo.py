@@ -134,7 +134,7 @@ def test_components_individually():
         from models.networks import create_model
         
         model = create_model('cnn13', num_classes=10)
-        test_input = torch.randn(2, 3, 32, 32)
+        test_input = torch.randn(2, 3, 32, 32).to(device)
         output = model.get_probabilities(test_input)
         assert output.shape == (2, 10), f"Expected (2, 10), got {output.shape}"
         print("✓ Model creation and forward pass work")
@@ -144,8 +144,8 @@ def test_components_individually():
         from rlgssl.teacher_student import TeacherStudentFramework
         
         framework = TeacherStudentFramework(model, device=device)
-        test_data = torch.randn(4, 3, 32, 32)
-        test_labels = torch.randint(0, 10, (4,))
+        test_data = torch.randn(4, 3, 32, 32).to(device)
+        test_labels = torch.randint(0, 10, (4,)).to(device)
         
         sup_loss = framework.compute_supervised_loss(test_data, test_labels)
         cons_loss = framework.compute_consistency_loss(test_data)
@@ -158,10 +158,10 @@ def test_components_individually():
         from rlgssl.mixup import MixupGenerator
         
         mixup_gen = MixupGenerator(device=device)
-        labeled_data = torch.randn(4, 3, 32, 32)
-        labeled_labels = torch.randint(0, 10, (4,))
-        unlabeled_data = torch.randn(8, 3, 32, 32)
-        pseudo_labels = torch.softmax(torch.randn(8, 10), dim=1)
+        labeled_data = torch.randn(4, 3, 32, 32).to(device)
+        labeled_labels = torch.randint(0, 10, (4,)).to(device)
+        unlabeled_data = torch.randn(8, 3, 32, 32).to(device)
+        pseudo_labels = torch.softmax(torch.randn(8, 10), dim=1).to(device)
         
         labeled_batch = {'data': labeled_data, 'labels': labeled_labels}
         unlabeled_batch = {'data': unlabeled_data}
