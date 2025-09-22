@@ -16,5 +16,12 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# log files
+# data files
+cifar-10-batches-py/
+cifar-10-python.tar.gz
+
+# logs files
 quick_run.log
+
+# experiments files
+experiments/
