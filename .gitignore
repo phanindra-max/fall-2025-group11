@@ -15,3 +15,6 @@ ENV/
 # OS files
 .DS_Store
 Thumbs.db
+
+# log files
+quick_run.log
