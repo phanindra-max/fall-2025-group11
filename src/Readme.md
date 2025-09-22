@@ -94,3 +94,6 @@ When you run the script, it will:
 3. **Run Evaluation**: After training, it will run a fast, non-visual evaluation over 100 episodes and print a final performance report.
 
 4. **Show Demonstration**: Finally, a window will pop up showing the fully trained agent playing one episode of CartPole, allowing you to visually confirm its performance.
+
+### Sample Terminal Output
+![cartpole_output](./Results/cartpole_terminal_output.png)
