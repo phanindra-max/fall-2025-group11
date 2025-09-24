@@ -16,12 +16,25 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# data files
+# Data files and datasets
+data/
 cifar-10-batches-py/
 cifar-10-python.tar.gz
+*.tar.gz
 
-# logs files
-quick_run.log
+# Log files
+*.log
+logs/
 
-# experiments files
+# Experiment artifacts
 experiments/
+checkpoints/
+*.pth
+*.pt
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Temporary files
+temp/
+tmp/
