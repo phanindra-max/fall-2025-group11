@@ -1,20 +1,21 @@
-# -*- coding: utf-8 -*-
-"""
-Author: Your Name
-Date: 2023-11-18
-Version: 1.0
-"""
-
+from env import PseudoLabelEnv
+from model import RLmodel
 
 def main():
-    """
+    env = PseudoLabelEnv()
+    model = RLmodel()
+    state, info = env.reset()
+    done = False
 
-    :rtype: object
-    """
-    print("Hello, World!")
+    while not done:
+        action = model.predict(state)
+        next_state, reward, terminated, truncated, info = env.step(action)
+        model.update(state, action, reward, next_state, terminated or truncated)
+        state = next_state
+        done = terminated or truncated
 
-    # More code...
+    env.close()
 
-
-if __name__ == "__main__":
+if __name__ == "main":
     main()
+
