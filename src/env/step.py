@@ -4,32 +4,31 @@ import numpy as np
 class PseudoLabelEnv(gym.Env):
     def __init__(self):
         super().__init__()
-        self.data = np.random.rand(100, 10).astype(np.float32)
-        self.labels = np.random.randint(0, 2, size=(100,))
-        self.total_steps = len(self.data)
-        self.current_index = 0
-        self.observation_space = gym.spaces.Box(low=0, high=1, shape=(10,), dtype=np.float32)
-        self.action_space = gym.spaces.Discrete(2)
 
-    def reset(self, *, seed=None, options=None):
+    def reset(self, *, seed = None, options = None):
         super().reset(seed=seed)
         self.current_index = 0
-        state = self.data[self.current_index]
+        state = np.zeros(self.observation_space.shape, dtype = np.float32)
         info = {}
-        return state, info
 
     def step(self, action):
-        correct_label = self.labels[self.current_index]
-        reward = 1.0 if action == correct_label else 0.0
-        self.current_index += 1
-        terminated = self.current_index >= self.total_steps
-        truncated = False
-        if not terminated:
-            next_state = self.data[self.current_index]
+        """
+        Executes one time step within the environment.
+        """
+        reward = 0
+        if action == 3: # Placeholder: let's say action '3' is a good label
+            reward = 1
         else:
-            next_state = np.zeros(self.observation_space.shape, dtype=np.float32)
-        info = {}
-        return next_state, reward, terminated, truncated, info
+            reward = -0.1 # Small penalty for other labels
+
+   
+        terminated = True  # Episode ends after one step (one labeling action)
+        truncated = False  # we can add, if required
+
+        # in the reset() function. Here, we can return the same state or a dummy one.
+        observation = self._state
+
+        return observation, reward, terminated, truncated
 
     def render(self):
         pass
