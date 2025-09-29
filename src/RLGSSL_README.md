@@ -71,7 +71,7 @@ python run_experiments.py --mode quick
 
 ### Paper Reproduction
 
-Run all experiments from the paper (⚠️ **WARNING: This takes days!**):
+Run all experiments from the paper (⚠️ **WARNING: This takes days if GPU is not used!**):
 
 ```bash
 cd src
