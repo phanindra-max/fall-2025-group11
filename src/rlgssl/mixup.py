@@ -17,7 +17,7 @@ class MixupGenerator:
     Handles size mismatch between labeled and unlabeled data via replication
     """
     
-    def __init__(self, alpha: float = 1.0, device: torch.device = torch.device('cpu')):
+    def __init__(self, alpha: float = 1.0, device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')):
         """
         Initialize mixup generator
         
@@ -194,7 +194,7 @@ class AdaptiveMixupGenerator(MixupGenerator):
     def __init__(
         self, 
         alpha: float = 1.0, 
-        device: torch.device = torch.device('cpu'),
+        device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu'),
         adaptive_strategy: str = 'confidence_based'
     ):
         super().__init__(alpha, device)

@@ -16,7 +16,7 @@ class RLRewardFunction:
     R(s,a;sg[θ]) = -1/(C·N^m) * Σ ||P_θ(x_i^m) - y_i^m||_2^2
     """
     
-    def __init__(self, device: torch.device = torch.device('cpu')):
+    def __init__(self, device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')):
         """
         Initialize reward function
         
@@ -185,7 +185,7 @@ class AdaptiveRewardFunction(RLRewardFunction):
     
     def __init__(
         self, 
-        device: torch.device = torch.device('cpu'),
+        device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu'),
         confidence_weight: float = 0.1,
         diversity_weight: float = 0.05
     ):

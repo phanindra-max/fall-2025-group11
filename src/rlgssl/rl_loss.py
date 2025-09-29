@@ -23,7 +23,7 @@ class RLLossFunction:
     def __init__(
         self,
         reward_function: RLRewardFunction,
-        device: torch.device = torch.device('cpu'),
+        device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu'),
         uniform_baseline: bool = True
     ):
         """
@@ -202,7 +202,7 @@ class AdaptiveRLLossFunction(RLLossFunction):
     def __init__(
         self,
         reward_function: Union[RLRewardFunction, AdaptiveRewardFunction],
-        device: torch.device = torch.device('cpu'),
+        device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu'),
         confidence_threshold: float = 0.8,
         entropy_regularization: float = 0.01
     ):
@@ -290,7 +290,7 @@ class CombinedLossFunction:
         rl_loss_fn: RLLossFunction,
         lambda_sup: float = 0.1,
         lambda_cons: float = 0.1,
-        device: torch.device = torch.device('cpu')
+        device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     ):
         """
         Initialize combined loss function

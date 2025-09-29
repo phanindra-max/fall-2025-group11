@@ -75,7 +75,7 @@ class TeacherStudentFramework:
         self,
         student_model: nn.Module,
         ema_decay: float = 0.999,
-        device: torch.device = torch.device('cpu')
+        device: torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     ):
         """
         Initialize teacher-student framework
