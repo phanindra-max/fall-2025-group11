@@ -30,6 +30,80 @@ This implementation provides a complete reproduction of **"Reinforcement Learnin
 - **KL Weighting**: Uniform baseline `e` for policy gradient computation
 - **Integration**: Combined with supervised and consistency losses
 
+## Personal Notes: RL vs RLGSSL
+
+I was getting confused thinking I needed to build separate actor-critic networks or something. But actually:
+
+- My CNN-13/WRN-28 models (wrapped in PolicyNetwork) **are** the RL policy
+- The "actions" are just the pseudo-labels (probability distributions) they output
+- "States" are the unlabeled data points
+- "Rewards" come from how well the model does on mixup data
+- Policy gets updated through my RL loss function
+
+So the RL part isn't separate - it's built into how I'm already training.
+
+### The math is different from normal RL
+
+```python
+# What I'm doing (from the paper):
+L_rl = -E[y_i^u ~ π_θ] KL(e, y_i^u) × R(s,a;sg[θ])
+
+# Normal policy gradient would be:
+L_pg = -E[log π_θ(a|s) × R(s,a)]
+
+# PPO would add clipping:
+L_ppo = -E[min(ratio × A(s,a), clip(ratio, 1-ε, 1+ε) × A(s,a))]
+```
+
+### Do I need PPO clipping or policy gradients?
+
+No, because:
+
+**PPO clipping**: That's for when you're doing sequential RL (like games) and need to prevent huge policy updates. But I'm just doing one-shot pseudo-labeling per batch - no sequences. Plus I already have stability from `stop_gradient=True` and curriculum learning.
+
+**Traditional policy gradients**: The reward in my setup is a scaling factor, not a direct optimization target. The KL divergence weighting + curriculum learning actually works better for this specific problem.
+
+This is a novel RL formulation from the paper, not standard REINFORCE or anything.
+
+### What about a custom environment?
+
+Don't need one! My `rlgssl_training_step()` function already IS my environment:
+
+```python
+# It already handles:
+# - State: unlabeled_data
+# - Action: pseudo_labels from teacher  
+# - Environment dynamics: mixup generation + model updates
+# - Reward: computed from mixup performance
+# - State transitions: EMA updates + gradient steps
+```
+
+Building a separate gym.Env would actually be worse because:
+- Extra overhead from step/reset calls
+- Can't process batches efficiently 
+- Unnecessary complexity
+
+### What I actually have vs what I thought I needed
+
+✅ Already have:
+- RL policy (PolicyNetwork)
+- Reward function (RLRewardFunction + adaptive version)
+- RL loss (RLLossFunction + adaptive version)
+- Environment (implicit in training loop)
+- Policy updates (via loss functions)
+- Stability mechanisms (stop gradients + curriculum learning)
+
+❌ Don't need:
+- Separate actor-critic networks
+- PPO clipping 
+- Traditional policy gradients
+- Custom gym environment
+- Q-networks or value functions
+
+**Bottom line**: My implementation looks complete and optimal. I was just confused about what "RL" meant in this context!
+
+---
+
 ## Enhancements Over Original Paper
 
 ### 1. Adaptive Reward Function Enhancements
