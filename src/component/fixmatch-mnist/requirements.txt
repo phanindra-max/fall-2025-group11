@@ -1,0 +1,6 @@
+torch
+torchvision
+numpy
+tqdm
+tensorboard
+apex  # Optional, for mixed-precision training
