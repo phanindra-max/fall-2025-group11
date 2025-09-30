@@ -43,7 +43,9 @@ To set up the project, follow these steps to clone the repository, create a virt
 1. **Clone the repository** to your local machine:
    ```bash
    git clone https://github.com/phanindra-max/fall-2025-group11.git
-   cd fall-2025-group11/src/component/fixmatch-mnist
+   cd fall-2025-group11
+   git checkout FixMatch-implementation-prudhvi
+   cd src/component/fixmatch-mnist
    ```
 
 2. **Create and activate a virtual environment**:
