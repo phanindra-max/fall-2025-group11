@@ -1,5 +1,3 @@
-# Deepika Baseline
-
 ## **Overview**
 
 This folder contains the **baseline implementation** for our RL-based pseudo-labeling project. The goal is to generate **soft pseudo-labels** for unlabeled data using a **warm-up downstream model**, which serves as the foundation for later reinforcement learning (RL) improvements.
