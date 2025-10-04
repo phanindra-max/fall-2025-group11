@@ -10,10 +10,25 @@ class PseudoLabelEnv(gym.Env):
         self.current_index = 0
         state = np.zeros(self.observation_space.shape, dtype = np.float32)
         info = {}
-        return state, info
 
     def step(self, action):
-        pass
+        """
+        Executes one time step within the environment.
+        """
+        reward = 0
+        if action == 3: # Placeholder: let's say action '3' is a good label
+            reward = 1
+        else:
+            reward = -0.01 # Small penalty for other labels
+
+   
+        terminated = True  # Episode ends after one step (one labeling action)
+        truncated = False  # we can add, if required
+
+        # in the reset() function. Here, we can return the same state or a dummy one.
+        observation = self._state
+
+        return observation, reward, terminated, truncated
 
     def render(self):
         pass
