@@ -19,7 +19,7 @@ class PseudoLabelEnv(gym.Env):
         if action == 3: # Placeholder: let's say action '3' is a good label
             reward = 1
         else:
-            reward = -0.1 # Small penalty for other labels
+            reward = -0.01 # Small penalty for other labels
 
    
         terminated = True  # Episode ends after one step (one labeling action)
